@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .container-fluid {
+            background-color: #dee6ec;
+            padding-top: 20px;
+        }
+        .btn-outline-light {
+            color: #fff;
+            border-color: #fff;
+        }
+        .bg-light {
+            background-color: #f8f9fa !important;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+        .btn-lg {
+            padding: 10px 20px;
+            font-size: 1.25rem;
+        }
+        .task-info {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .task-info h3 {
+            margin-bottom: 10px;
+        }
+        .task-info h4 {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row bg-light justify-content-center py-3">
+            <h1>Hello, {{ user.first_name }}</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-3 bg-light p-3">
+                <div class="d-grid gap-3">
+                    <a class="btn btn-primary btn-lg btn-block" href="home">Home</a>
+                    <a class="btn btn-primary btn-lg btn-block" href="profile">Profile</a>
+                    <a class="btn btn-primary btn-lg btn-block" href="points">Points</a>
+                    <a class="btn btn-primary btn-lg btn-block" href="task">Task</a>
+                    <a class="btn btn-primary btn-lg btn-block" href="logout">Logout</a>
+                </div>
+            </div>
+            <div class="col-md-9 bg-light p-3">
+                <div class="container">
+                    <div class="task-info">
+                        <div class="row">
+                            <div class="col">
+                                <h3>Apps</h3>
+                                {% for app_name in app_names %}
+                                    <h4>{{ app_name }}</h4>
+                                {% endfor %}
+                            </div>
+                            <div class="col">
+                                <h3>Points</h3>
+                                {% for app_point in app_points %}
+                                    <h4>{{ app_point }}</h4>
+                                {% endfor %}
+                            </div>
+                            <div class="col">
+                                <h3>Total Points</h3>
+                                <h4>{{ total_points }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
